@@ -34,3 +34,12 @@ It will start a basic asynchronous function, which will start a express server o
 
 `import * as dotenv from "dotenv"`
 It means all exports from the module are grouped under a single object (here, dotenv). Now we have access to all the method provided by dotenv, e.g. config(), parse(), etc.
+
+## connectDB
+
+connectDB will return a promise and it will resolve with a mongoose object, else if there will be an error during connection it will log the error and exits the 'Node' process.
+
+The exit code 1 is significant:
+
+By convention, a non-zero exit code (like 1) indicates that the process terminated with an error.
+An exit code of 0 typically means the process executed successfully.
