@@ -1,5 +1,6 @@
 import express, { type Express, type Request, type Response } from "express";
 import * as dotenv from "dotenv";
+import morgan from "morgan";
 
 import connectDB from "./db/connect";
 
@@ -7,6 +8,7 @@ const app: Express = express();
 dotenv.config();
 const PORT = process.env.PORT || 5000;
 
+app.use(morgan("tiny")); //Console the path, type of request and time taken to execute the task.
 app.use(express.json());
 
 app.get("/", (req: Request, res: Response) => {
