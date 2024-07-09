@@ -1,4 +1,4 @@
-import express, { Express } from "express";
+import express, { type Express, type Request, type Response } from "express";
 import * as dotenv from "dotenv";
 
 import connectDB from "./db/connect";
@@ -6,6 +6,12 @@ import connectDB from "./db/connect";
 const app: Express = express();
 dotenv.config();
 const PORT = process.env.PORT || 5000;
+
+app.use(express.json());
+
+app.get("/", (req: Request, res: Response) => {
+  res.send("E-Commerce API");
+});
 
 const start = async (): Promise<void> => {
   try {

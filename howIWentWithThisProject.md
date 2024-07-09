@@ -43,3 +43,30 @@ The exit code 1 is significant:
 
 By convention, a non-zero exit code (like 1) indicates that the process terminated with an error.
 An exit code of 0 typically means the process executed successfully.
+
+## CustomAPIError
+
+```
+class CustomAPIError extends Error {
+  constructor(message: string) {
+    super(message);
+  }
+}
+```
+
+`class` - creates a new class called "CustomAPIError".
+`extends` - helps borrow features from an already established "Error class".
+`constructor` - create an instance of the class, and pass the arugments if present. And is called automatically when `new` keyword is called.
+`super` - helps pasing data to the parent class (Error)
+
+`Class` -
+
+1. Is a blueprint or template for creating objects.
+2. Defines the structure and behaviour that object will have.
+3. It's like a recipe for making dish(Object).
+
+`Object` -
+
+1. Is an instance of a class.
+2. Is concrete entity created from the class blueprint.
+3. It's the acutal dish created with the recipe(Class)
