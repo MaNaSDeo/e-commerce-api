@@ -1,4 +1,5 @@
 import mongoose, { Model, Schema } from "mongoose";
+import validator from "validator";
 
 export interface IUser extends Document {
   name: string;
@@ -16,7 +17,16 @@ const UserSchema: Schema<IUser> = new mongoose.Schema<IUser>({
     maxlength: 50,
   },
 
-  email: { type: String, required: [true, "Please provide email"] },
+  email: {
+    type: String,
+    required: [true, "Please provide email"],
+    validate: {
+      validator: function (value: string) {
+        return validator.isEmail(value);
+      },
+      message: "Please provide an email",
+    },
+  },
 
   password: {
     type: String,
