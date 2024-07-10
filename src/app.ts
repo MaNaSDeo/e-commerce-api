@@ -3,6 +3,7 @@ import * as dotenv from "dotenv";
 import morgan from "morgan";
 
 import connectDB from "./db/connect";
+import authRouter from "./routes/v1/auth.route";
 
 const app: Express = express();
 dotenv.config();
@@ -14,6 +15,8 @@ app.use(express.json());
 app.get("/", (req: Request, res: Response) => {
   res.send("E-Commerce API");
 });
+
+app.use("/api/v1/auth", authRouter);
 
 const start = async (): Promise<void> => {
   try {
