@@ -4,6 +4,7 @@ import CustomAPIError from "./custom-api";
 interface NotFoundError {
   statusCode: number;
 }
+
 class NotFoundError extends CustomAPIError {
   constructor(message: string) {
     super(message);

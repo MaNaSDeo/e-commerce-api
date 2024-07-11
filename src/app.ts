@@ -1,9 +1,12 @@
 import express, { type Express, type Request, type Response } from "express";
 import * as dotenv from "dotenv";
 import morgan from "morgan";
+import "express-async-errors";
 
 import connectDB from "./db/connect";
 import authRouter from "./routes/v1/auth.route";
+import notFoundMiddleware from "./middlewares/not-found";
+import errorHandlerMiddleware from "./middlewares/error-handler";
 
 const app: Express = express();
 dotenv.config();
@@ -17,6 +20,8 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.use("/api/v1/auth", authRouter);
+app.use(notFoundMiddleware);
+app.use(errorHandlerMiddleware);
 
 const start = async (): Promise<void> => {
   try {
